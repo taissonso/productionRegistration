@@ -1,0 +1,71 @@
+html, * {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 100px;
+    width: 100%;
+    background: red;
+    line-height: 100px;
+    text-align: center;
+}
+
+main {
+    width: 100%;
+    background: blue;
+}
+
+form {
+    height: 100%;
+    width: 600px;
+    margin:auto;
+    background-color: green;
+}
+
+#botoes {
+    margin-top: 20px;
+    display: block;
+}
+
+.modal {
+    position: fixed;
+    /*Definindo as bordas como zero para ocupar toda a tela */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /*Define a cor e a opacidade que ira ocupar toda a tela com a definição acima*/
+    background: rgb(0, 0, 0, 0.9);
+    /*Definir o z-index para que a caixa modal fique por cima de tudo*/
+    z-index: 99999;
+    /*Só irá aparecer quando clicar em enviar*/
+    opacity:0;
+	pointer-events: none;
+}
+
+/*Quando clicar no enviar irá ativar a janela*/
+.modal:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal > div {
+    width: 600px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 0px;
+	background: rgb(0, 204, 255);
+}
+
+footer {
+    height: 100px;
+    width: 100%;
+    background: black;
+    color: white;
+    line-height: 100px;
+    text-align: center;
+    bottom: 0;
+    position: fixed;
+}
