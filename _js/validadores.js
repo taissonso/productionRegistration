@@ -1,19 +1,52 @@
 var form = document.getElementsByTagName('form')[0];
 
-//Seleciona o campo Nome e aplica o evendo 
-var campoNome = document.getElementById('nome');
+var btnEnviar = document.getElementById('enviar');
+var btnCancelar = document.getElementById('resetar');
 
-campoNome.addEventListener('keyup', validaNome);
+form.addEventListener('load', botaoEnviar(0));
 
+//Eventos para cada Campo e Botão
+form.addEventListener('keyup', validaNome);
+
+btnCancelar.addEventListener('click', cancelaEnvio);
+
+//Funções
 function validaNome() {
-    var nome = campoNome.value;
     
+    var nome = document.getElementById('nome').value;
+    console.log("NOME CAPTURADO: " + nome);
     //testar se o nome está vazio
-    if (nome.trim() == ''){
-        console.log('Nome Vazio');
+    if (nome.trim() == '') {
+        document.getElementById('erroNome').innerHTML = '* ERRO: Campo Vazio!';
+        botaoEnviar(0);
     } else {
-        //caso contrario envia o nome para gravar
-        console.log("VARIAVEL --> " + nome);
-        campoNome.addEventListener('submit', gravar(nome));
+        document.getElementById('erroNome').innerHTML = '';
+        recebeDados(nome)
+        botaoEnviar(1);
     }
+    
+}
+
+//Função que fica controlando o botão enviar só para fins de testes
+function botaoEnviar (flag){
+    if (flag == 0){
+        document.getElementById('enviar').onclick = function(){ return false }
+    } else {
+        document.getElementById('enviar').onclick = function(){ return true }
+    }
+}
+
+//Como é um botão com reset ele limpa o formulário e desativa o botão de enviar
+//Tem que limpar os campos spans de forma mais generalizada
+function cancelaEnvio () {
+    document.getElementById('erroNome').innerHTML = '';
+    document.getElementById('enviar').onclick = function(){ return false }
+}
+
+//Para colocar no localStorage e mostrar na janela Modal
+function recebeDados(nome){
+    localStorage.setItem('nome',nome);
+    
+    var modal = document.getElementById('escreveModal');
+    modal.innerHTML = "<p> Nome do Produto: " + nome;
 }

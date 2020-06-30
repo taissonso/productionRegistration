@@ -23,6 +23,17 @@ form {
     background-color: green;
 }
 
+span {
+    font-size: 16px;
+    color: red;
+}
+
+#enviar {
+    background: rgba(240, 103, 103, 0.486);
+    font-size: 16px;
+    color: white;
+}
+
 #botoes {
     margin-top: 20px;
     display: block;
