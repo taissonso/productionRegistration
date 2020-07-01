@@ -3,28 +3,36 @@ var form = document.getElementsByTagName('form')[0];
 var btnEnviar = document.getElementById('enviar');
 var btnCancelar = document.getElementById('resetar');
 
+//Carrega o arquivo e desativa o botão de enviar 
 form.addEventListener('load', botaoEnviar(0));
 
-//Eventos para cada Campo e Botão
+//Eventos para os campos e botões
 form.addEventListener('keyup', validaNome);
 
 btnCancelar.addEventListener('click', cancelaEnvio);
 
 //Funções
 function validaNome() {
-    
+    //Pega o valor do campo nome
     var nome = document.getElementById('nome').value;
-    console.log("NOME CAPTURADO: " + nome);
-    //testar se o nome está vazio
-    if (nome.trim() == '') {
-        document.getElementById('erroNome').innerHTML = '* ERRO: Campo Vazio!';
-        botaoEnviar(0);
+    //define uma regex
+    var regex =  new RegExp(/[^a-zA-Z\s+]/);
+    console.log('NOME  ' + nome + '  REGEX: ' + regex.test(nome));
+
+    //testar se o nome está vazio ou tem caracteres especiais
+    if (nome.trim() == '' || regex.test(nome)) {
+        if (nome.trim() == ''){
+            document.getElementById('erroNome').innerHTML = '* Não aceita Campo Vazio!';
+            botaoEnviar(0);
+        } else {
+            document.getElementById('erroNome').innerHTML = '* Campo não aceita caracteres especiais!';
+            botaoEnviar(0);
+        }
     } else {
         document.getElementById('erroNome').innerHTML = '';
         recebeDados(nome)
         botaoEnviar(1);
     }
-    
 }
 
 //Função que fica controlando o botão enviar só para fins de testes
