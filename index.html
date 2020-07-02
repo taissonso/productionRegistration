@@ -18,7 +18,7 @@
         <form method="POST">
             <div>
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" maxlength="50">
+                <input type="text" name="nome" id="nome" maxlength="50" placeholder="Digite o nome do produto">
                 <span id="erroNome"></span>
             </div>
 
@@ -35,28 +35,29 @@
 
             <div>
                 <label for="quantidade">Quantidade</label>
-                <input type="text" name="quantidade" id="quantidade" placeholder="0,00">
+                <input type="text" name="quantidade" id="quantidade" placeholder="Digite a quantidade">
                 <strong id="medidadeUnidade"></strong>
                 <span id="erroQuantidade"></span>
             </div>
 
             <div>
                 <label for="preco">Preço</label>
-                <input type="text">
+                <input type="text" name="preco" id="preco"placeholder="R$ 0,00">
+                <span id="erroPreco"></span>
             </div>
             <div>
                 <label for="perecivel">Produto Perecível?</label>
-                <input type="checkbox" name="perecivel" id="">
+                <input type="checkbox" name="perecivel" id="perecivel">
             </div>
 
             <div>
-                <label for="validade">Data de Validade</label>
-                <input type="date" name="validade" id="">
+                <label for="validade" id="label">Data de Validade</label>
+                <input type="date" name="validade" id="validade">
             </div>
 
             <div>
                 <label for="fabricacao">Data de Fabricação</label>
-                <input type="date" name="fabricacao" id="">
+                <input type="date" name="fabricacao" id="fabricacao">
             </div>
 
             <a href="#abrirModal" id="enviar">Enviar</a>
@@ -69,7 +70,7 @@
                     <div id="escreveModal">
 
                     </div>
-                    <button type="button" href="#fechar" class="fechar"><a href="#fechar" title="Fechar" class="fechar">OK</a></button>
+                   <a href="#fechar" title="Fechar" class="fechar" id="limpar">Concluir</a>
                 </div>
             </div>
         </form>
@@ -78,9 +79,7 @@
     <footer>
         <p>Rodapé</p>
     </footer>
-    <script src="_js/webStorage.js"></script>
     <script src="_js/validadores.js" type="text/javascript"></script>
-
 </body>
 
 </html>

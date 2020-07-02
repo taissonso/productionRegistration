@@ -23,7 +23,7 @@ form {
     background-color: green;
 }
 
-#quantidade {
+#quantidade , #preco {
     text-align: right;
 }
 
