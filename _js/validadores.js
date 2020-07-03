@@ -9,7 +9,6 @@ var medidaForm = document.getElementById('medida');
 var quantidadeForm = document.getElementById('quantidade');
 var precoForm = document.getElementById('preco');
 var perecivelForm = document.getElementById('perecivel');
-
 var btnEnviar = document.getElementById('enviar');
 var btnCancelar = document.getElementById('resetar');
 var btnLimpar = document.getElementById('limpar');
@@ -17,11 +16,10 @@ var btnLimpar = document.getElementById('limpar');
 //Eventos para os campos e botões
 nomeForm.addEventListener('keyup', validaNome);
 medidaForm.addEventListener('change', validaMedida);
+quantidadeForm.addEventListener('focus', validaQuantidade);
 quantidadeForm.addEventListener('keyup', validaQuantidade);
 precoForm.addEventListener('keyup', validaPreco);
 perecivelForm.addEventListener('click', validaPerecivel);
-
-fabricacaoForm.addEventListener('change', validaFabricacao)
 btnCancelar.addEventListener('click', cancelaEnvio);
 btnEnviar.addEventListener('click', enviaDados);
 btnLimpar.addEventListener('click', limparForm);
@@ -68,45 +66,53 @@ function validaQuantidade(medida) {
     medidaForm.addEventListener('change', validaMedida);
     var seleciona = document.getElementById('medida');
     var aux = seleciona.options[seleciona.selectedIndex].value;
-    var regex = new RegExp(/\D+/);
 
+    // var quantidade = document.getElementById('quantidade').value;
     var quantidade = document.getElementById('quantidade').value;
-    console.log('DIGITADO: ' + quantidade + ' RESULTADO: ' + regex.test(quantidade));
-
-    if (!regex.test(quantidade) || quantidade == '') {
-        document.getElementById('erroQuantidade').innerHTML = '';
-        if (aux != '1') {
-            document.getElementById('erroQuantidade').innerHTML = '';
-            if (aux == 'un') {
-                console.log('CONFIGURAR COMO UNIDADE');
-            } else {
-                console.log('CONFIGURAR COMO LITRO E QUILOGRAMA');
-            }
-        } else {
-            document.getElementById('erroMedida').innerHTML = '* Por Favor, selecione uma opção!';
-        }
+    if (aux == '1') {
+        //Mostra o erro e bloqueia o campo
+        document.getElementById('erroMedida').innerHTML = '* Por Favor selecione uma Unidade de Medida!';
+        document.getElementById('quantidade').disabled = true;
     } else {
-        if (quantidade.trim() == '') {
-            document.getElementById('erroQuantidade').innerHTML = '* Campo vazio!';
+        //Desbloqueia o campo e tira a mensagem de erro
+        document.getElementById('quantidade').disabled = false;
+        document.getElementById('erroQuantidade').innerHTML = '';
+        if (aux == 'un') {
+            document.getElementById('quantidade').placeholder = 'Somente números inteiros';
+            quantidade = quantidade.replace(/\D+/, ""); //somente números
+            this.value = quantidade;
         } else {
-            document.getElementById('erroQuantidade').innerHTML = '* Campo obrigatorio, não aceita letras!';
+            document.getElementById('quantidade').placeholder = '0,000';
+            quantidade = quantidade.replace(/\D/, "");//somente números
+            quantidade = quantidade.replace(/^[0]+/, "");//remove os zeros a esquerda
+            quantidade = quantidade.replace(/^(\d{1,})(\d{3})$/, "$1,$2");
+            quantidade = quantidade.replace(/^(\d{1})$/, "0,00$1");
+            quantidade = quantidade.replace(/^(\d{2})$/, "0,0$1");
+            quantidade = quantidade.replace(/^(\d{3})$/, "0,$1");
+            this.value = quantidade;
         }
     }
+
 }
 
 function validaPreco() {
     var preco = document.getElementById('preco').value;
-    var regex = new RegExp(/\D+/);
+    console.log(preco);
+    preco = preco.replace('R$ ', ""); //Tira o cifrão da frente
+    if (preco == ' '){
+        document.getElementById('erroPreco').innerHTML = '* Não aceita campo vazio!';
+    }else {
+        preco = preco.replace(',', ""); //Remove a virgula do valor
+        preco = preco.replace('.', ""); //Remove o ponto do valor
+        preco = preco.replace(/\D/, "");//somente números
+        preco = preco.replace(/^[0]+/, "");//remove os zeros a esquerda
 
-    if (!regex.test(preco) || preco == '') {
-        document.getElementById('erroPreco').innerHTML = '';
-        //mascara para preço
-    } else {
-        if (preco.trim() == '') {
-            document.getElementById('erroPreco').innerHTML = '* Campo vazio!';
-        } else {
-            document.getElementById('erroPreco').innerHTML = '* Campo obrigatorio, não aceita letras ou espaço em branco!';
-        }
+        preco = preco.replace(/^(\d{1,})(\d{3})(\d{3})(\d{2})$/, "$1.$2.$3,$4");
+        preco = preco.replace(/^(\d{1,})(\d{3})(\d{2})$/, "$1.$2,$3");
+        preco = preco.replace(/^(\d{1,})(\d{2})$/, "$1,$2");
+        preco = preco.replace(/^(\d{1})$/, "0,0$1");
+        preco = preco.replace(/^(\d{2})$/, "0,$1");
+        this.value = 'R$ ' + preco;
     }
 }
 
@@ -124,12 +130,6 @@ function validaPerecivel() {
         document.getElementById('validade').style.display = 'none';
         return perecivel = 'Não';
     }
-}
-
-//Valida a data de fabricação do produto 
-function validaFabricacao () {
-    var data = document.getElementById('fabricacao').value;
-    console.log('Data adquirida: ' + data);
 }
 
 //Como é um botão com reset ele limpa o formulário e desativa o botão de enviar
@@ -167,13 +167,14 @@ function enviaDados() {
     var quantidade = document.getElementById('quantidade').value;
     var preco = document.getElementById('preco').value;
     var perecivel = validaPerecivel();
+
     if (nome != '' && preco != '') {
         document.getElementById('enviar').onclick = function () { return true }
         var modal = document.getElementById('escreveModal');
         modal.innerHTML = "<p> Nome do Produto: " + nome + "</p><br>"
             + "<p> Unidade de Medida: " + medidaTexto + "</p><br>"
             + "<p> Quantidade: " + quantidade + "</p><br>"
-            + "<p> Preço: R$ " + preco + "</p><br>"
+            + "<p> Preço: " + preco + "</p><br>"
             + "<p> Perecivel: " + perecivel + "</p><br>";
     } else {
         document.getElementById('enviar').onclick = function () { return false }
