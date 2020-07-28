@@ -42,9 +42,16 @@
 
             <div>
                 <label for="preco">Preço</label>
-                <input type="text" name="preco" id="preco" placeholder="R$ 0,00">
+                <input type="text" name="preco" id="preco" placeholder="R$ 0,00" maxlength="17">
                 <span id="erroPreco"></span>
             </div>
+
+            <div>
+                <label for="fabricacao">Data de Fabricação</label>
+                <input type="date" name="fabricacao" id="fabricacao" max="2999-12-31" min="1900-12-31">
+                <span id="erroFabricacao"></span>
+            </div>
+
             <div>
                 <label for="perecivel">Produto Perecível?</label>
                 <input type="checkbox" name="perecivel" id="perecivel">
@@ -52,12 +59,8 @@
 
             <div>
                 <label for="validade" id="label">Data de Validade</label>
-                <input type="date" name="validade" id="validade">
-            </div>
-
-            <div>
-                <label for="fabricacao">Data de Fabricação</label>
-                <input type="date" name="fabricacao" id="fabricacao">
+                <input type="date" name="validade" id="validade" max="2999-12-31">
+                <span id="erroValidade"></span>
             </div>
 
             <a href="#abrirModal" id="enviar">Enviar</a>

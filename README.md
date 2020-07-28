@@ -11,11 +11,11 @@ Cadastro de Produtos utilizando HTML5 e JavaScript.
 
         4. Preço (Monetário).
 
-        5. Produto Perecível (Valor booleano).
+        5. Data de fabricação. (Não pode ser superior a data de validade).
 
-        6. Data de Validade (Só se o produto for perecível).
+        6. Produto Perecível (Valor booleano).
 
-        7. Data de fabricação. (Não pode ser superior a data de validade).
+        7. Data de Validade (Só se o produto for perecível).
 
     --- Botões --- 
 
