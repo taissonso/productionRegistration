@@ -27,7 +27,11 @@ form {
     text-align: right;
 }
 
-span {
+#label-validade , #validade {
+    display: none;
+}
+
+.msg-erro {
     font-size: 16px;
     color: red;
 }

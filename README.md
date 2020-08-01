@@ -13,12 +13,18 @@ Cadastro de Produtos utilizando HTML5 e JavaScript.
 
         5. Data de fabricação. (Não pode ser superior a data de validade).
 
-        6. Produto Perecível (Valor booleano).
+        6. Produto Perecível (Valor booleano), mostra mensagem de Sim ou Não na Janela Modal.
 
-        7. Data de Validade (Só se o produto for perecível).
+        7. Data de Validade (Só se o produto for perecível) e não pode ser menor que a data de fabricação.
 
+        OBS: Não aceitam autocomplete.
+        
     --- Botões --- 
 
-        - Enviar, salva o produto no LocalStorage (abre uma janela Modal com a descrição do produto).
+        - Cadastrar, abre uma janela Modal com a descrição do produto.
 
-        - Cancelar, limpa todos os campos. 
+        - Cancelar, limpa todos os campos.
+
+        - Concluir, fecha a janela modal e limpa os campos do formulário.  
+
+        - X (da janela Modal), fecha a janela mas não limpa o formulário, deixa como está. 
