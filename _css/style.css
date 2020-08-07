@@ -4,47 +4,103 @@ html, * {
 }
 
 header {
-    height: 100px;
+    height: 15vh;
     width: 100%;
-    background: red;
-    line-height: 100px;
+    line-height: 15vh;
     text-align: center;
 }
 
+h1 {
+    font-size: 4vw;
+    text-decoration: underline;
+}
+
 main {
+    height: 100%;
     width: 100%;
-    background: blue;
+    margin: 10px 0 0 0;
 }
 
 form {
+    border: 1px solid rgb(190, 189, 189);
+    width: 60vw;
     height: 100%;
-    width: 600px;
-    margin:auto;
-    background-color: green;
+    border-radius: 8px;
+    margin: auto;
+    position: relative;
 }
 
-#quantidade , #preco {
+label {
+    display: block;
+    margin: 0 0 0 15%;
+    padding: 5px 0 0 0;
+    font-size: 16px;
+}
+
+::-webkit-input-placeholder { 
+    color: #000000; 
+    font-style: italic;
+    font-size: 12px;
+}
+
+input, select {
+    margin: 0 0 0 15%;
+    width: 40vw;
+    height: 3vh;
     text-align: right;
+}
+select {
+    height: 4vh;
+    width: 40.3vw;
+}
+#perecivel {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+#label-perecivel, input[type='checkbox'], #medidadeUnidade, #quantidade {
+    display: inline-block;
 }
 
 #label-validade , #validade {
     display: none;
 }
 
+#quantidade , #preco {
+    text-align: right;
+}
+
 .msg-erro {
-    font-size: 16px;
-    color: red;
-}
-
-#enviar {
-    background: rgba(240, 103, 103, 0.486);
-    font-size: 16px;
-    color: white;
-}
-
-#botoes {
-    margin-top: 20px;
     display: block;
+    font-size: 16px;
+    color:#ff1717;
+    margin: 0 0 0 15%;
+    padding: 0;
+}
+
+#cadastrar , #cancelar{
+    display: inline-block;
+    margin: 1% 0 1% 15%;
+    text-decoration: none;
+    border: 2px solid rgb(0, 38, 255);
+    background-color: #0000FF;
+    color: white;
+    border-radius: 6px;
+    width: 100px;
+    text-align: center;
+}
+
+#cancelar {
+    display: inline-block;
+    margin: 1% 0 1% 41%;
+    border: 2px solid red;
+    background-color: #FF0000;
+    color: white;
+    border-radius: 6px;
+    width: 100px;
+    text-align: center;
 }
 
 .modal {
@@ -79,11 +135,11 @@ form {
 }
 
 footer {
-    height: 100px;
+    height: 10vh;
     width: 100%;
     background: black;
     color: white;
-    line-height: 100px;
+    line-height: 10vh;
     text-align: center;
     bottom: 0;
     position: fixed;

@@ -51,7 +51,7 @@ function enviaDados(evt) {
     /*testar se o nome está vazio*/
     var erroNome = document.querySelector('.erro-nome');
     if (nome.value == "") {
-        erroNome.style.display = 'inline';
+        erroNome.style.display = 'block';
         erroNome.innerHTML = "* Campo obrigatório!";
         contador += 1;
     } else {
@@ -61,7 +61,7 @@ function enviaDados(evt) {
     /* Validação do campo Unidade de Medida */
     var erroMedida = document.querySelector('.erro-medida');
     if (medida.value == '1') {
-        erroMedida.style.display = 'inline';
+        erroMedida.style.display = 'block';
         erroMedida.innerHTML = "* Campo obrigatório!";
         contador += 1;
     } else {
@@ -71,7 +71,7 @@ function enviaDados(evt) {
     /* Validação do campo Quantidade */
     var erroQuantidade = document.querySelector('.erro-quantidade');
     if (quantidade.value == '') {
-        erroQuantidade.style.display = 'inline';
+        erroQuantidade.style.display = 'block';
         erroQuantidade.innerHTML = "* Campo Obrigatório!";
         contador += 1;
     } else {
@@ -81,7 +81,7 @@ function enviaDados(evt) {
     /* Validação do campo Preço */
     var erroPreco = document.querySelector('.erro-preco');
     if (preco.value == '') {
-        erroPreco.style.display = 'inline';
+        erroPreco.style.display = 'block';
         erroPreco.innerHTML = "* Campo Obrigatório!";
         contador += 1;
     } else {
@@ -91,29 +91,36 @@ function enviaDados(evt) {
     /* Validação do campo de Data de Fabricação*/
     var erroFabricacao = document.querySelector('.erro-fabricacao');
     var erro = validaFabricacao();
-    
-    if (fabricacao.value == '' || erro == false) {
-        if (erro == false){
-            erroFabricacao.display = 'inline';
-            erroFabricacao.innerHTML = "* Data superior ao dia de hoje!";
+    console.log(erro);
+    if (erro == false || fabricacao.value == '') {
+        if (fabricacao.value == ''){
+            
+            erroFabricacao.display = 'block';
+            erroFabricacao.innerHTML = "* Campo Obrigatório!";
             contador += 1;
         } else {
-            erroFabricacao.display = 'inline';
-            erroFabricacao.innerHTML = "* Campo Obrigatório!";
+            erroFabricacao.display = 'block';
+            erroFabricacao.innerHTML = "* Data superior ao dia de hoje!";
             contador += 1;
         }
     } else {
-        erroFabricacao.style.display = 'none';
+        erroFabricacao.innerHTML = '';
     }
 
     /* Mostra ou não a data de validade */
     var erroValidade = document.querySelector('.erro-validade');
     if (validade.value == '' && perecivel.checked == true) {
-        erroValidade.style.display = 'inline';
+        erroValidade.style.display = 'block';
         erroValidade.innerHTML = "* Campo Obrigatório!";
         contador += 1;
     } else {
-        erroValidade.innerHTML = '';
+       if (validade.value < fabricacao.value && validade.value != ''){
+            erroValidade.style.display = 'block';
+            erroValidade.innerHTML = "* Data de validade MENOR que a data de Fabricação!";
+            contador += 1;
+       } else {
+           erroValidade.innerHTML = '';
+       }
     }
 
     if (contador > 0) {
@@ -156,6 +163,7 @@ function validaMedida() {
     var erroMedida = document.querySelector('.erro-medida');
     var erroQuantidade = document.querySelector('.erro-quantidade');
     if (medida == '1') {
+        erroMedida.style.display = 'inline';
         erroMedida.innerHTML = '* Por Favor, selecione uma opção!'
         validaQuantidade();
     } else {
@@ -180,19 +188,20 @@ function validaQuantidade(medida) {
     var erroQuantidade = document.querySelector('.erro-quantidade');
 
     if (opcao == '1') {
-        erroMedida.style.display = 'inline';
+        erroMedida.style.display = 'block';
         erroMedida.innerHTML = '* Por Favor selecione uma Unidade de Medida!';
         blqQuantidade.disabled = true;
-        erroQuantidade.style.display = 'inline';
+        erroQuantidade.style.display = 'block';
         erroQuantidade.innerHTML = '* Campo Obrigatório!';
     } else {
         /* Desbloqueia o campo e tira a mensagem de erro */
+        erroQuantidade.style.display = 'block';
         erroQuantidade.innerHTML = '* Campo Obrigatório!';
         blqQuantidade.disabled = false;
-        //erroQuantidade.style.display = 'inline';
 
         if (opcao == 'un') {
             if (quantidade == '') {
+                erroQuantidade.style.display = 'block';
                 erroQuantidade.innerHTML = '* Campo Obrigatório!';
             } else {
                 document.getElementById('quantidade').placeholder = 'Somente números inteiros';
@@ -202,6 +211,7 @@ function validaQuantidade(medida) {
             }
         } else {
             if (quantidade == '') {
+                erroQuantidade.style.display = 'block';
                 erroQuantidade.innerHTML = '* Campo Obrigatório!';
             } else {
                 erroQuantidade.innerHTML = '';
@@ -260,7 +270,7 @@ function validaFabricacao() {
     dataAtual = new Date(dataAtual.getFullYear(), dataAtual.getMonth(), dataAtual.getDate());
 
     if (dataDigitada > dataAtual) {
-        erroFabricacao.style.display = 'inline';
+        erroFabricacao.style.display = 'block';
         erroFabricacao.innerHTML = '* Data superior ao dia de hoje!';
         btnCadastrar.disabled = true;
         return false
@@ -283,14 +293,16 @@ function validaPerecivel() {
     var perecivel = document.getElementById('perecivel');
 
     if (perecivel.checked == true) {
-        document.getElementById('label-validade').style.display = 'inline';
-        document.getElementById('validade').style.display = 'inline';
+        document.getElementById('label-validade').style.display = 'block';
+        document.getElementById('validade').style.display = 'block';
         return perecivel = 'Sim';
     } else {
         //se não for perecivel então esconde a data
         document.getElementById('label-validade').style.display = 'none';
         document.getElementById('validade').style.display = 'none';
         document.querySelector('.erro-validade').innerHTML = '';
+        validade.disabled = false;
+        validade.value = '';
         return perecivel = 'Não';
     }
 }
@@ -305,7 +317,7 @@ function validaValidade() {
     var perecivel = document.getElementById('perecivel');
     var erroFabricacao = document.querySelector('.erro-fabricacao');
     var erroValidade = document.querySelector('.erro-validade');
-
+    var label = document.getElementById('label-validade');
     if (fabricacao.value == '') {
         erroFabricacao.innerHTML = "* Campo Obrigatório!";
         erroValidade.innerHTML = "* Data de Fabricação é obrigatório!";
@@ -319,7 +331,7 @@ function validaValidade() {
                 erroValidade.innerHTML = '* Preencha a data de validade!'
             } else {
                 if (validade.value < fabricacao.value) {
-                    erroValidade.innerHTML = '* Data de Validade é MENOR que o de Fabricação!'
+                    erroValidade.innerHTML = '* Data de validade MENOR que a data de Fabricação!!'
                     btnCadastrar.disabled = true;
                 } else {
                     btnCadastrar.disabled = false;
@@ -341,6 +353,7 @@ function cancelarEnvio() {
     document.getElementById('validade').style.display = 'none'
     document.getElementById('perecivel').checked = false;
     document.getElementById('quantidade').disabled = false;
+    document.getElementById('medidadeUnidade').style.display = 'none';
 }
 
 /* Transforma a data no formato dd/mm/aaaa */

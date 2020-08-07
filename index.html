@@ -15,55 +15,43 @@
     </header>
 
     <main>
-        <form method="POST" id="formulario">
-            <div>
-                <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" maxlength="50" placeholder="Digite o nome do produto">
-                <span class="msg-erro erro-nome"></span>
-            </div>
+        <form method="POST" id="formulario" autocomplete="off">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" maxlength="50" placeholder="Digite o nome do produto">
+            <span class="msg-erro erro-nome"></span>
 
-            <div>
-                <label for="medida">Unidade de Medida</label>
-                <select name="medida" name="medida" id="medida">
-                    <option value="1" selected>Selecione uma opção</option>
-                    <option value="lt">Litro</option>
-                    <option value="kg">Quilograma</option>
-                    <option value="un">Unidade</option>
-                </select>
-                <span class="msg-erro erro-medida"></span>
-            </div>
+            <label for="medida">Unidade de Medida</label>
+            <select name="medida" name="medida" id="medida">
+                <option value="1" selected>Selecione uma opção</option>
+                <option value="lt">Litro</option>
+                <option value="kg">Quilograma</option>
+                <option value="un">Unidade</option>
+            </select>
+            <span class="msg-erro erro-medida"></span>
 
-            <div>
-                <label for="quantidade">Quantidade</label>
-                <input type="text" name="quantidade" id="quantidade" placeholder="Digite a quantidade" maxlength="17">
-                <strong id="medidadeUnidade"></strong>
-                <span class="msg-erro erro-quantidade"></span>
-            </div>
+            <label for="quantidade">Quantidade</label>
+            <input type="text" name="quantidade" id="quantidade" placeholder="Digite a quantidade" maxlength="17">
+            <span id="medidadeUnidade"></span>
+            <span class="msg-erro erro-quantidade"></span>
 
-            <div>
-                <label for="preco">Preço</label>
-                <input type="text" name="preco" id="preco" placeholder="R$ 0,00" maxlength="17">
-                <span class="msg-erro erro-preco"></span>
-            </div>
+            <label for="preco">Preço</label>
+            <input type="text" name="preco" id="preco" placeholder="R$ 0,00" maxlength="17">
+            <span class="msg-erro erro-preco"></span>
 
-            <div>
-                <label for="fabricacao">Data de Fabricação</label>
-                <input type="date" name="fabricacao" id="fabricacao" max="2999-12-31" min="1900-12-31">
-                <span class="msg-erro erro-fabricacao"></span>
-            </div>
+            <label for="fabricacao">Data de Fabricação</label>
+            <input type="date" name="fabricacao" id="fabricacao" max="2999-12-31" min="1900-12-31">
+            <span class="msg-erro erro-fabricacao"></span>
 
-            <div>
-                <label for="perecivel">Produto Perecível?</label>
-                <input type="checkbox" name="perecivel" id="perecivel" value='false'>
-            </div>
 
-            <div>
-                <label for="validade" id="label-validade">Data de Validade</label>
-                <input type="date" name="validade" id="validade" max="2999-12-31">
-                <span class="msg-erro erro-validade"></span>
-            </div>
+            <label for="perecivel" id="label-perecivel">Produto Perecível?</label>
+            <input type="checkbox" name="perecivel" id="perecivel" value='false'>
+
+            <label for="validade" id="label-validade">Data de Validade</label>
+            <input type="date" name="validade" id="validade" max="2999-12-31">
+            <span class="msg-erro erro-validade"></span>
+
             <a href="#abrirModal" type="submit" id="cadastrar">Cadastrar</a>
-            <button type="reset" id="cancelar">Cancelar</button>
+            <a type="reset" id="cancelar" type="reset">Cancelar</a>
 
             <div id="abrirModal" class="modal">
                 <div>
@@ -72,7 +60,7 @@
                     <div id="escreveModal">
 
                     </div>
-                   <a href="#fechar" title="Concluir" class="fechar" id="concluir">Concluir</a>
+                    <a href="#fechar" title="Concluir" class="fechar" id="concluir">Concluir</a>
                 </div>
             </div>
         </form>
