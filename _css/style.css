@@ -47,7 +47,6 @@ input, select {
     margin: 0 0 0 15%;
     width: 40vw;
     height: 3vh;
-    text-align: right;
 }
 select {
     height: 4vh;
@@ -80,67 +79,132 @@ select {
     padding: 0;
 }
 
-#cadastrar , #cancelar{
+#cadastrar{
     display: inline-block;
     margin: 1% 0 1% 15%;
     text-decoration: none;
-    border: 2px solid rgb(0, 38, 255);
-    background-color: #0000FF;
-    color: white;
-    border-radius: 6px;
-    width: 100px;
     text-align: center;
+    border: 2px solid #0077ff;
+    border-radius: 12px;
+    box-shadow: 1px 1px 3px #000;
+    background-color:  #0077ff;
+    color: #ffffff;
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+#cadastrar:hover{
+    background: #073b77;
+    border: 2px solid #0077ff;
 }
 
 #cancelar {
     display: inline-block;
     margin: 1% 0 1% 41%;
-    border: 2px solid red;
-    background-color: #FF0000;
-    color: white;
-    border-radius: 6px;
-    width: 100px;
+    text-decoration: none;
     text-align: center;
+    border: 2px solid #fc1b1b;
+    border-radius: 12px;
+    box-shadow: 1px 1px 3px #000;
+    background-color:  #fc1b1b;
+    color: #ffffff;
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+#cancelar:hover{
+    background: #ff5100;
+    border: 2px solid #ff4800;
 }
 
 .modal {
     position: fixed;
-    /*Definindo as bordas como zero para ocupar toda a tela */
+    /*Definindo a posição como zero para ocupar toda a tela */
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    /*Define a cor e a opacidade que ira ocupar toda a tela com a definição acima*/
+    /*Define a cor e a opacidade*/
     background: rgb(0, 0, 0, 0.9);
     /*Definir o z-index para que a caixa modal fique por cima de tudo*/
     z-index: 99999;
-    /*Só irá aparecer quando clicar em enviar*/
+    /*Só irá aparecer quando clicar em Cadastrar*/
     opacity:0;
 	pointer-events: none;
 }
 
-/*Quando clicar no enviar irá ativar a janela*/
+/*Quando clicar no Cadastrar irá ativar a janela mudando a opacidade para 1*/
 .modal:target {
     opacity: 1;
     pointer-events: auto;
 }
 
 .modal > div {
-    width: 600px;
+    width: 400px;
 	position: relative;
-	margin: 10% auto;
+	margin: 5% auto;
 	padding: 5px 20px 13px 20px;
 	border-radius: 0px;
-	background: rgb(0, 204, 255);
+    background: rgb(255, 255, 255);
+}
+
+h2 {
+    text-align: center;
+    text-decoration: underline;
+    margin: 5% 0 0 0;
+}
+
+.voltar {
+    background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+    position: absolute;
+    right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+    font-weight: bold;
+	border-radius: 12px;
+	box-shadow: 1px 1px 3px #000;
+}
+
+.voltar:hover { background: #00d9ff; }
+
+.concluir {
+    text-decoration: none;
+    text-align: center;
+    line-height: 20px;
+    border: 2px solid #06b406;
+    border-radius: 12px;
+    box-shadow: 1px 1px 3px #000;
+    background-color: #06b406;
+    color: #ffffff;
+    width: 100px;
+    height: 20px;
+    display: block;
+    font-weight: bold;
+}
+
+.concluir:hover {
+    background: #828382;
+    border: 2px solid #5f5f5f;
 }
 
 footer {
-    height: 10vh;
+    height: 8vh;
     width: 100%;
     background: black;
-    color: white;
-    line-height: 10vh;
-    text-align: center;
+    line-height: 8vh;
     bottom: 0;
     position: fixed;
+    text-align: center;
+}
+
+img {
+    padding: 10px 5px 5px 15px;
 }

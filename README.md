@@ -1,5 +1,5 @@
 # productionRegistration
-Cadastro de Produtos utilizando HTML5 e JavaScript. 
+Cadastro de Produtos utilizando HTML5, CSS3 e JavaScript. 
 
     --- Campos ---
 
