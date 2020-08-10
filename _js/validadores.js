@@ -47,22 +47,30 @@ function enviaDados(evt) {
     var perecivel = document.getElementById('perecivel');
     var validade = document.getElementById('validade');
     var contador = 0;
-
+    var error = 0;
     /*testar se o nome está vazio*/
     var erroNome = document.querySelector('.erro-nome');
-    if (nome.value == "") {
+    
+    if (nome.value == '') {
         erroNome.style.display = 'block';
-        erroNome.innerHTML = "* Campo obrigatório!";
+        erroNome.innerHTML = "*Campo obrigatório!";
         contador += 1;
     } else {
-        erroNome.style.display = 'none';
+        error = validaNome();
+        if (error > 0){
+            erroNome.style.display = 'block';
+            erroNome.innerHTML = '*Campo não aceita caracteres especiais!';
+            contador += 1;
+        } else {
+            erroNome.style.display = 'none';
+        }
     }
 
     /* Validação do campo Unidade de Medida */
     var erroMedida = document.querySelector('.erro-medida');
     if (medida.value == '1') {
         erroMedida.style.display = 'block';
-        erroMedida.innerHTML = "* Campo obrigatório!";
+        erroMedida.innerHTML = "*Campo obrigatório!";
         contador += 1;
     } else {
         erroMedida.style.display = 'none';
@@ -72,7 +80,7 @@ function enviaDados(evt) {
     var erroQuantidade = document.querySelector('.erro-quantidade');
     if (quantidade.value == '') {
         erroQuantidade.style.display = 'block';
-        erroQuantidade.innerHTML = "* Campo Obrigatório!";
+        erroQuantidade.innerHTML = "*Campo Obrigatório!";
         contador += 1;
     } else {
         erroQuantidade.style.display = 'none';
@@ -82,7 +90,8 @@ function enviaDados(evt) {
     var erroPreco = document.querySelector('.erro-preco');
     if (preco.value == '') {
         erroPreco.style.display = 'block';
-        erroPreco.innerHTML = "* Campo Obrigatório!";
+        erroPreco.innerHTML = "*Campo Obrigatório!";
+        btnCadastrar.disabled = true;
         contador += 1;
     } else {
         erroPreco.style.display = 'none';
@@ -91,16 +100,14 @@ function enviaDados(evt) {
     /* Validação do campo de Data de Fabricação*/
     var erroFabricacao = document.querySelector('.erro-fabricacao');
     var erro = validaFabricacao();
-    console.log(erro);
     if (erro == false || fabricacao.value == '') {
         if (fabricacao.value == ''){
-            
             erroFabricacao.display = 'block';
-            erroFabricacao.innerHTML = "* Campo Obrigatório!";
+            erroFabricacao.innerHTML = "*Campo Obrigatório!";
             contador += 1;
         } else {
             erroFabricacao.display = 'block';
-            erroFabricacao.innerHTML = "* Data superior ao dia de hoje!";
+            erroFabricacao.innerHTML = "*Data superior ao dia de hoje!";
             contador += 1;
         }
     } else {
@@ -111,12 +118,12 @@ function enviaDados(evt) {
     var erroValidade = document.querySelector('.erro-validade');
     if (validade.value == '' && perecivel.checked == true) {
         erroValidade.style.display = 'block';
-        erroValidade.innerHTML = "* Campo Obrigatório!";
+        erroValidade.innerHTML = "*Campo Obrigatório!";
         contador += 1;
     } else {
        if (validade.value < fabricacao.value && validade.value != ''){
             erroValidade.style.display = 'block';
-            erroValidade.innerHTML = "* Data de validade MENOR que a data de Fabricação!";
+            erroValidade.innerHTML = "*Data de validade MENOR que a data de Fabricação!";
             contador += 1;
        } else {
            erroValidade.innerHTML = '';
@@ -140,15 +147,15 @@ function validaNome() {
     //testar se o nome está vazio ou tem caracteres especiais
     if (nome.trim() == '' || regex.test(nome)) {
         if (nome.trim() == '') {
-            erroNome.innerHTML = '* Não aceita Campo Vazio!';
-            btnCadastrar.disabled = true;
+            erroNome.innerHTML = '*Campo Vazio!';
+            return 1;
         } else {
-            erroNome.innerHTML = '* Campo não aceita caracteres especiais!';
-            btnCadastrar.disabled = true;
+            erroNome.innerHTML = '*Campo não aceita caracteres especiais!';
+            return 1;
         }
     } else {
         erroNome.innerHTML = '';
-        btnCadastrar.disabled = false;
+        return 0;
     }
 }
 

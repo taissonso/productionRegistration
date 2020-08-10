@@ -103,7 +103,6 @@ select {
 #cancelar {
     display: inline-block;
     margin: 1% 0 1% 41%;
-    text-decoration: none;
     text-align: center;
     border: 2px solid #fc1b1b;
     border-radius: 12px;
@@ -111,8 +110,8 @@ select {
     background-color:  #fc1b1b;
     color: #ffffff;
     width: 100px;
-    height: 20px;
-    line-height: 20px;
+    height: 25px;
+    line-height: 25px;
     font-weight: bold;
 }
 
