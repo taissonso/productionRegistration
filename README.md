@@ -11,17 +11,20 @@ Cadastro de Produtos utilizando HTML5, CSS3 e JavaScript.
         2. Unidade de Medida. (Litro, Quilograma, Unidade), via select. 
 
         3. Quantidade (Com virgula para Litro e Quilograma e número inteiro para Unidade). Caso uma unidade de medida
-        não seja selecionada o campo de quantidade fica bloqueado e mostra uma mensagem até que o usuário selecione o tipo de unidade.
+        não seja selecionada o campo de quantidade fica bloqueado e mostra uma mensagem até que o usuário 
+        selecione o tipo de unidade.
 
         4. Preço (Monetário), em reais, o campo só aceita números, foi criado uma mascara que preenche o valor da direita 
         para a esquerda, repeitando duas casas depois da virgula e colocando ponto depois de milhar e milhões. 
 
-        5. Data de fabricação. Não pode ser superior a data de validade e nem superior ao dia atual que for feita o cadastro do produto. 
+        5. Data de fabricação. Não pode ser superior a data de validade e nem superior ao dia atual que for feita o
+        cadastro do produto. 
 
-        6. Produto Perecível (Valor booleano), mostra mensagem de Sim ou Não na Janela Modal, ao selecionar "Sim", mostra o campo de Validade.
+        6. Produto Perecível (Valor booleano), mostra mensagem de Sim ou Não na Janela Modal, ao selecionar "Sim", 
+        mostra o campo de Validade.
 
-        7. Data de Validade (Só se o produto for perecível) e não pode ser menor que a data de fabricação, por padrão esse campo aparece 
-        oculto no formulário.
+        7. Data de Validade (Só se o produto for perecível) e não pode ser menor que a data de fabricação, por padrão 
+        esse campo aparece oculto no formulário.
 
         OBS: Os campos Não aceitam autocomplete.
         
@@ -38,11 +41,11 @@ Cadastro de Produtos utilizando HTML5, CSS3 e JavaScript.
 
     --- ERROS --- 
 
-        - Problemas inicias com o botão de cadastrar, que ao clicar duas vezes cadastrava o produto mesmo com erros no formulário, 
-        o mesmo foi tratado e não está acontecendo mais. 
+        - Problemas inicias com o botão de cadastrar, que ao clicar duas vezes cadastrava o produto mesmo com erros 
+        no formulário, o mesmo foi tratado e não está acontecendo mais. 
 
-        - Problemas com o botão de Cancelar, não estava limpando as mensagens de forma mais genérica. O CSS foi ajustado para 
-        ficar com o mesmo tamanho do botão cadastrar.
+        - Problemas com o botão de Cancelar, não estava limpando as mensagens de forma mais genérica. O CSS foi 
+        ajustado para ficar com o mesmo tamanho do botão cadastrar.
     
     --- DIFICULDADES --- 
 
