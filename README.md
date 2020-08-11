@@ -10,11 +10,11 @@ Cadastro de Produtos utilizando HTML5, CSS3 e JavaScript.
 
         2. Unidade de Medida. (Litro, Quilograma, Unidade), via select. 
 
-        3. Quantidade (Com virgula para Litro e Quilograma e número inteiro para Unidade). Caso uma unidade de medida não seja selecionada 
-        o campo de quantidade fica bloqueado e mostra uma mensagem até que o usuário selecione o tipo de unidade.
+        3. Quantidade (Com virgula para Litro e Quilograma e número inteiro para Unidade). Caso uma unidade de medida
+        não seja selecionada o campo de quantidade fica bloqueado e mostra uma mensagem até que o usuário selecione o tipo de unidade.
 
-        4. Preço (Monetário), em reais, o campo só aceita números, foi criado uma mascara que preenche o valor da direita para a esquerda, 
-        repeitando duas casas depois da virgula e colocando ponto depois de milhar e milhões. 
+        4. Preço (Monetário), em reais, o campo só aceita números, foi criado uma mascara que preenche o valor da direita 
+        para a esquerda, repeitando duas casas depois da virgula e colocando ponto depois de milhar e milhões. 
 
         5. Data de fabricação. Não pode ser superior a data de validade e nem superior ao dia atual que for feita o cadastro do produto. 
 
@@ -27,7 +27,8 @@ Cadastro de Produtos utilizando HTML5, CSS3 e JavaScript.
         
     --- Botões --- 
 
-        - Cadastrar, cadastra o produto e abre uma janela Modal com a descrição do produto, só será enviado caso todos os campos estejam corretos.
+        - Cadastrar, cadastra o produto e abre uma janela Modal com a descrição do produto, só será enviado caso todos os 
+        campos estejam corretos.
 
         - Cancelar, limpa todos os campos e mensagens de erros do formulário.
 
