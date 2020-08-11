@@ -48,9 +48,9 @@ function enviaDados(evt) {
     var validade = document.getElementById('validade');
     var contador = 0;
     var error = 0;
+    
     /*testar se o nome está vazio*/
     var erroNome = document.querySelector('.erro-nome');
-    
     if (nome.value == '') {
         erroNome.style.display = 'block';
         erroNome.innerHTML = "*Campo obrigatório!";
@@ -144,7 +144,6 @@ function validaNome() {
     //define uma regex que só aceita letras com espaço.
     var regex = new RegExp(/[^a-zA-Z\s]/);
 
-    //testar se o nome está vazio ou tem caracteres especiais
     if (nome.trim() == '' || regex.test(nome)) {
         if (nome.trim() == '') {
             erroNome.innerHTML = '*Campo Vazio!';
@@ -201,7 +200,6 @@ function validaQuantidade(medida) {
         erroQuantidade.style.display = 'block';
         erroQuantidade.innerHTML = '* Campo Obrigatório!';
     } else {
-        /* Desbloqueia o campo e tira a mensagem de erro */
         erroQuantidade.style.display = 'block';
         erroQuantidade.innerHTML = '* Campo Obrigatório!';
         blqQuantidade.disabled = false;
@@ -304,7 +302,6 @@ function validaPerecivel() {
         document.getElementById('validade').style.display = 'block';
         return perecivel = 'Sim';
     } else {
-        //se não for perecivel então esconde a data
         document.getElementById('label-validade').style.display = 'none';
         document.getElementById('validade').style.display = 'none';
         document.querySelector('.erro-validade').innerHTML = '';
@@ -419,33 +416,3 @@ function imprimeCadastro() {
             + "<br><p> Data de Fabricação: " + fabricacao + "</p><br>"
     }
 }
-
-
-
-/*
-
-
-//Pega os elementos do HMTL para usar nos eventos
-
-var btnEnviar = document.getElementById('enviar');
-
-var btnLimpar = document.getElementById('limpar');
-
-//Eventos para os campos e botões
-
-btnLimpar.addEventListener('click', limparForm);
-//Funções
-
-function limparForm() {
-    document.getElementById('nome').value = '';
-    document.getElementById('medida').selectedIndex = 0;
-    document.getElementById('medidadeUnidade').innerHTML = '';
-    document.getElementById('quantidade').value = '';
-    document.getElementById('preco').value = '';
-    document.getElementById('fabricacao').value = '';
-    document.getElementById('perecivel').checked = false;
-    document.getElementById('label').style.display = 'none';
-    document.getElementById('validade').style.display = 'none';
-}
-
-*/
